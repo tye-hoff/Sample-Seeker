@@ -38,6 +38,7 @@ function App() {
       <div className="page">
         <div className="page__content">
           <Header></Header>
+
           <Routes>
             <Route path="/" element={<Main></Main>} />
           </Routes>

@@ -1,0 +1,83 @@
+.header {
+  padding: 32px 0;
+  margin: 10px 0;
+  border-radius: 8px;
+  background-color: #00000069;
+}
+
+.header__logo {
+  margin-right: 24px;
+  margin-left: 24px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__title {
+  margin: 0;
+  font-family: Cabinet Grotesk;
+  color: whitesmoke;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background-color: #0000008f;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.header__sound-btn {
+  margin-left: 20px;
+  margin-right: 20px;
+  border: none;
+  color: whitesmoke;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+  background-color: #0000008f;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.header__login-btn {
+  /* margin-left: 20px;
+    margin-right: 20px; */
+  border: none;
+  color: whitesmoke;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+  background-color: #0000008f;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.header__signup-btn {
+  /* margin-left: 20px;
+    margin-right: 20px; */
+  border: none;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  color: whitesmoke;
+  line-height: 24px;
+  cursor: pointer;
+  background-color: #0000008f;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.header__sound-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+}
