@@ -15,13 +15,11 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import SeekSampleModal from "../seekSampleModal/SeekSampleModal";
 
 // CONSTANTS & API
+// import { registerUser } from "../../utils/Auth";
 import {
-  processSampleResults,
-  postSound,
-  getSampleInstanceAudio,
-  getSampleInstanceData,
   getSoundListData,
-  getSoundListSound,
+  getSampleInstanceData,
+  processSampleResults,
   processSampleData,
 } from "../../utils/FreeSoundApi";
 
@@ -30,55 +28,34 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [samples, setSamples] = useState();
-  const [samplesList, setSamplesList] = useState([]);
-  const [listAudio, setListAudio] = useState([]);
-  // const [sampleAudio, setSampleAudio] = useState();
+  const [sample, setSample] = useState();
 
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    getSampleInstanceAudio()
-      .then((res) => {
-        const processedSampleAudio = processSampleData(res);
-        setSamples(processedSampleAudio);
-      })
-      .catch(console.error);
-  }, []);
-
-  useEffect(() => {
-    getSampleInstanceData()
-      .then((res) => {
-        const processedData = processSampleData(res);
-        setSamples(processedData);
-      })
-      .catch(console.error);
-  }, []);
+  const [samplesList, setSamplesList] = useState([]);
 
   useEffect(() => {
     getSoundListData()
       .then((results) => {
-        setSamplesList(results.results);
+        setSamplesList(results.results.slice(0, 6));
       })
       .catch(console.error);
   }, []);
 
   useEffect(() => {
-    getSoundListSound()
+    getSampleInstanceData(70670)
       .then((res) => {
-        console.log(res);
-        const processedSoundList = processSampleData(res);
-        setListAudio(processedSoundList);
+        setSample(res);
       })
       .catch(console.error);
-  }, []);
+  });
 
-  const handleSeekSubmit = () => {
-    return postSound()
-      .then((data) => {
-        const processedSearchResults = processSampleResults(data);
-        setSamples([processedSearchResults]);
+  const handleRegisterModalSubmit = ({ name, avatar, email, password }) => {
+    return registerUser({ name, avatar, email, password })
+      .then((res) => {
+        setCurrentUser(res.userObject);
+        setIsLoggedIn(true);
+        localStorage.setItem("jwt", res.token);
         closeActiveModal();
       })
       .catch(console.error);
@@ -128,8 +105,7 @@ function App() {
                   isOpen={activeModal === "seek-sample"}
                   onSeekClick={handleSeekClick}
                   samplesList={samplesList}
-                  samples={samples}
-                  listAudio={listAudio}
+                  sample={sample}
                 />
               }
             />
@@ -141,6 +117,7 @@ function App() {
           isOpen={activeModal === "register-user"}
           onClose={closeActiveModal}
           onRegisterClick={handleRegisterClick}
+          onRegisterModalSubmit={handleRegisterModalSubmit}
           onRedirect={handleLoginClick}
           onEscPress={handleEscPress}
         />
@@ -161,7 +138,7 @@ function App() {
           isOpen={activeModal === "seek-sample"}
           onClose={closeActiveModal}
           onSeekClick={handleSeekClick}
-          onSeekSubmit={handleSeekSubmit}
+          // onSeekSubmit={handleSeekSubmit}
           onEscPress={handleEscPress}
         />
       </div>

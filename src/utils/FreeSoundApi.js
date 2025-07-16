@@ -4,71 +4,29 @@ const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
+// APP/JSON
 function getSoundListData() {
-  return fetch(`${baseURL}/search/text/?query=&token=${APIkey}`, {
+  return fetch(
+    `${baseURL}/search/text/?query=music&filter=created:[* TO NOW]&token=${APIkey}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then(checkResponse);
+}
+
+function getSampleInstanceData(id) {
+  return fetch(`${baseURL}/sounds/${id}/?&token=${APIkey}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((results) => {
-      return results;
-    })
-    .then(checkResponse);
+  }).then(checkResponse);
 }
 
-function getSoundListSound() {
-  return fetch(`${baseURL}/packs/9678/sounds/?query=&token=${APIkey}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "audio/mp3",
-    },
-  })
-    .then((results) => {
-      return results;
-    })
-    .then(checkResponse);
-}
-
-function getSampleInstanceAudio() {
-  return fetch(`${baseURL}/sounds/1234/?&token=${APIkey}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "audio/mp3",
-    },
-  })
-    .then((res) => {
-      return res;
-    })
-    .then(checkResponse);
-}
-
-function getSampleInstanceData() {
-  return fetch(`${baseURL}/sounds/1234/?&token=${APIkey}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => {
-      return res;
-    })
-    .then(checkResponse);
-}
-
-function postSound() {
-  return fetch(`${baseURL}/search/text/?query=&token=${APIkey}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((results) => {
-      return results;
-    })
-    .then(checkResponse);
-}
-
+// DATA PROCESSING/ DESTRUCTURING
 function processSampleData(soundObject) {
   return {
     id: soundObject.id,
@@ -81,6 +39,8 @@ function processSampleData(soundObject) {
     previews: {
       highQualityMp3: soundObject.previews["preview-hq-mp3"],
       lowQualityMp3: soundObject.previews["preview-lq-mp3"],
+      highQualityOgg: soundObject.previews["preview-hq-ogg"],
+      lowQualityOgg: soundObject.previews["preview-lq-ogg"],
     },
 
     images: {
@@ -100,8 +60,9 @@ function processSampleData(soundObject) {
 
 function processSampleResults(apiResponse) {
   const { results, count, next, previous } = apiResponse;
+  console.log(apiResponse);
 
-  const processedSamples = results.map(processSampleData);
+  const processedSamples = results.map(processSampleResults);
 
   return {
     samples: processedSamples,
@@ -114,43 +75,8 @@ function processSampleResults(apiResponse) {
 }
 
 export {
-  getSampleInstanceAudio,
+  getSoundListData,
   getSampleInstanceData,
   processSampleResults,
   processSampleData,
-  postSound,
-  getSoundListData,
-  getSoundListSound,
 };
-
-// function getSampleData() {
-//   return fetch(`${baseURL}/search/text/?query=&token=${APIkey}`, {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   })
-//     .then((results) => {
-//       return results;
-//     })
-//     .then(checkResponse);
-// }
-
-// function processSearchResults(data) {
-//   const { results, count, next } = data;
-
-//   // Transform the data for easier use in your components
-//   const processedSounds = results.map((sound) => ({
-//     id: sound.id,
-//     title: sound.name,
-//     author: sound.username,
-//     tags: sound.tags,
-//     license: sound.license,
-//   }));
-
-//   return {
-//     processedSounds,
-//     totalCount: count,
-//     hasMore: next !== null,
-//   };
-// }

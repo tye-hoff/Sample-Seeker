@@ -45,6 +45,12 @@
   border-radius: 8px;
   border: solid;
   border-color: #0000004d;
+  position: relative;
+}
+
+.card__audio-btn {
+  border-radius: 8px;
+  border: none;
 }
 
 .card__like-btn {
