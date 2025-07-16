@@ -1,16 +1,41 @@
 import "./Main.css";
-// import SoundCard from "../SoundCard/SoundCard";
-import mpc from "../../assets/addSoundBtn.avif";
-import akai from "../../assets/seekSampleViaTag.avif";
-import sp404 from "../../assets/seekSampleViaId.avif";
+import SoundCard from "../SoundCard/SoundCard";
 
-function Main() {
+function Main({ samplesList, samples }) {
+  const sampleListArray = samplesList.slice(0, 3);
+
+  console.log(sampleListArray);
+
   return (
     <main>
       <section className="sounds">
         <ul className="sounds__options">
-          <button className="sounds__btn">
-            Seek Sample via name
+          {sampleListArray &&
+            Array.isArray(sampleListArray) &&
+            sampleListArray.map((sampleListArray) => {
+              return (
+                <SoundCard
+                  key={sampleListArray.id}
+                  samples={samples}
+                  sampleListArray={sampleListArray}
+                />
+              );
+            })}
+        </ul>
+      </section>
+    </main>
+  );
+}
+
+export default Main;
+
+// import mpc from "../../assets/addSoundBtn.avif";
+// import akai from "../../assets/seekSampleViaTag.avif";
+// import sp404 from "../../assets/seekSampleViaId.avif";
+
+{
+  /* <button className="sounds__btn">
+            Seek Sample via Author
             <img
               src={mpc}
               alt="seek samples"
@@ -32,11 +57,5 @@ function Main() {
               alt="seek samples"
               className="sounds__options-img-id"
             />
-          </button>
-        </ul>
-      </section>
-    </main>
-  );
+          </button> */
 }
-
-export default Main;

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-export default function () {
+export default function ({ isOpen, onClose, onEscPress, onEditProfileClick }) {
   const { currentUser } = useContext(CurrentUserContext);
   const [updatedName, setUpdatedName] = useState(currentUser?.name);
   const [updatedAvatar, setUpdatedAvatar] = useState(currentUser?.avatar);
@@ -17,7 +17,12 @@ export default function () {
   };
 
   return (
-    <ModalWithForm>
+    <ModalWithForm
+      isOpen={isOpen}
+      onClose={onClose}
+      onEscPress={onEscPress}
+      onEditProfileClick={onEditProfileClick}
+    >
       <label htmlFor="edit-name" className="modal__label">
         Name{" "}
         <input

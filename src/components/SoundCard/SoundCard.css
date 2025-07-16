@@ -1,4 +1,4 @@
-.soundcard__search-btn {
+/* .soundcard__search-btn {
   width: 200px;
   height: 150px;
   border: none;
@@ -10,4 +10,54 @@
   height: 150px;
   border-radius: 8px;
   background-repeat: no-repeat;
+} */
+
+.soundcards {
+  width: 323px;
+  height: 328px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.card__container {
+  position: absolute;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card__name {
+  margin: 0;
+  background: #ffffff;
+  border-radius: 4px;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #00000099;
+  padding: 2px 12px;
+}
+
+.card__image {
+  width: 100%;
+  border-radius: 8px;
+  border: solid;
+  border-color: #0000004d;
+}
+
+.card__like-btn {
+  width: 18px;
+  height: 15px;
+  background-image: url("../../assets/cardLikeBtn.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card__like-btn_liked {
+  background-image: url("../../assets/likeBtnLiked.svg");
 }

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-export default function LoginModal() {
+export default function LoginModal({
+  isOpen,
+  onClose,
+  onLoginClick,
+  onRedirect,
+  onEscPress,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,8 +18,21 @@ export default function LoginModal() {
     setPassword(e.target.value);
   };
 
+  const registerRedirect = () => {
+    onRedirect();
+  };
+
   return (
-    <ModalWithForm>
+    <ModalWithForm
+      buttonText="Log in"
+      buttonText2="or sign up"
+      title="Log in"
+      isOpen={isOpen}
+      onClose={onClose}
+      onEscPress={onEscPress}
+      registerRedirect={registerRedirect}
+      onLoginClick={onLoginClick}
+    >
       <label htmlFor="email" className="modal__label">
         Email{" "}
         <input

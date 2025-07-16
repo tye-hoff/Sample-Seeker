@@ -1,13 +1,24 @@
 import "./ModalWithForm.css";
 
-function ModalWithForm({ isOpen, onClose }) {
+function ModalWithForm({
+  isOpen,
+  onClose,
+  onSubmit,
+  buttonText,
+  buttonText2,
+  hasSecondButton,
+  loginRedirect,
+  registerRedirect,
+  children,
+  title,
+}) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content">
-        <h2 className="modal__title">modal</h2>
+        <h2 className="modal__title">{title}</h2>
         <button onClick={onClose} type="button" className="modal__close" />
-        <form className="modal__form">
-          {/* {children}
+        <form onSubmit={onSubmit} className="modal__form">
+          {children}
           <div className="modal__btn-container">
             <button type="submit" className="modal__submit">
               {buttonText}
@@ -17,12 +28,12 @@ function ModalWithForm({ isOpen, onClose }) {
               <button
                 type="button"
                 className="modal__redirect"
-                onClick={registrationRedirect || loginRedirect}
+                onClick={registerRedirect || loginRedirect}
               >
                 {buttonText2}
               </button>
             )}
-          </div> */}
+          </div>
         </form>
       </div>
     </div>

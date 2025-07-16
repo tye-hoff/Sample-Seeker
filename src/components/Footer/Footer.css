@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  margin-top: 171px;
+  justify-content: space-between;
+}
+
+.footer__signature {
+  font-family: Cabinet Grotesk;
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: bottom;
+}
+
+.footer__year {
+  font-family: Cabinet Grotesk;
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: bottom;
+}

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-export default function RegisterModal({ isOpen, onClose, onRegisterClick }) {
+export default function RegisterModal({
+  isOpen,
+  onClose,
+  onRegisterClick,
+  onRedirect,
+  onEscPress,
+}) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
@@ -22,8 +28,22 @@ export default function RegisterModal({ isOpen, onClose, onRegisterClick }) {
     }
   };
 
+  const loginRedirect = () => {
+    onRedirect();
+  };
+
   return (
-    <ModalWithForm>
+    <ModalWithForm
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Register"
+      buttonText="Sign up"
+      buttonText2="or log in"
+      hasSecondButton={true}
+      loginRedirect={loginRedirect}
+      onEscPress={onEscPress}
+      onRegisterClick={onRegisterClick}
+    >
       <label htmlFor="register-name" className="modal__label">
         Name{" "}
         <input
