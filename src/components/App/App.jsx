@@ -1,5 +1,4 @@
 // IMPORTS: ->
-
 // REACT & STYLING
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -13,57 +12,31 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import SeekSampleModal from "../seekSampleModal/SeekSampleModal";
+import Profile from "../Profile/Profile";
 
 // CONSTANTS & API
-// import { registerUser } from "../../utils/Auth";
-import {
-  getSoundListData,
-  getSampleInstanceData,
-  processSampleResults,
-  processSampleData,
-} from "../../utils/FreeSoundApi";
+import { getSoundListData } from "../../utils/FreeSoundApi";
 
 // CONTEXT
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
-  const [activeModal, setActiveModal] = useState("");
-  const [sample, setSample] = useState();
-
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [activeModal, setActiveModal] = useState("");
   const [samplesList, setSamplesList] = useState([]);
 
   useEffect(() => {
     getSoundListData()
-      .then((results) => {
-        setSamplesList(results.results.slice(0, 6));
+      .then((res) => {
+        setSamplesList(res.results.slice(0, 6));
       })
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    getSampleInstanceData(70670)
-      .then((res) => {
-        setSample(res);
-      })
-      .catch(console.error);
-  });
-
-  const handleRegisterModalSubmit = ({ name, avatar, email, password }) => {
-    return registerUser({ name, avatar, email, password })
-      .then((res) => {
-        setCurrentUser(res.userObject);
-        setIsLoggedIn(true);
-        localStorage.setItem("jwt", res.token);
-        closeActiveModal();
-      })
-      .catch(console.error);
-  };
-
   const handleEscPress = (event) => {
     if (event.key === "Escape") {
-      closeActiveModal("");
+      setActiveModal("");
     }
   };
 
@@ -87,6 +60,11 @@ function App() {
     setActiveModal("edit-profile");
   };
 
+  const handleLogoutClick = () => {
+    setIsLoggedIn(false);
+    setCurrentUser(false);
+  };
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
       <div className="page">
@@ -98,17 +76,16 @@ function App() {
           />
 
           <Routes>
+            <Route path="/" element={<Main samplesList={samplesList} />} />
             <Route
-              path="/"
+              path="/profile"
               element={
-                <Main
-                  isOpen={activeModal === "seek-sample"}
-                  onSeekClick={handleSeekClick}
-                  samplesList={samplesList}
-                  sample={sample}
+                <Profile
+                  onEditProfileClick={handleEditProfileClick}
+                  onLogoutClick={handleLogoutClick}
                 />
               }
-            />
+            ></Route>
           </Routes>
 
           <Footer />
@@ -117,7 +94,6 @@ function App() {
           isOpen={activeModal === "register-user"}
           onClose={closeActiveModal}
           onRegisterClick={handleRegisterClick}
-          onRegisterModalSubmit={handleRegisterModalSubmit}
           onRedirect={handleLoginClick}
           onEscPress={handleEscPress}
         />
@@ -138,7 +114,6 @@ function App() {
           isOpen={activeModal === "seek-sample"}
           onClose={closeActiveModal}
           onSeekClick={handleSeekClick}
-          // onSeekSubmit={handleSeekSubmit}
           onEscPress={handleEscPress}
         />
       </div>

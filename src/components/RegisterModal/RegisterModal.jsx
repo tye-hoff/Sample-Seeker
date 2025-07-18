@@ -42,7 +42,6 @@ export default function RegisterModal({
       hasSecondButton={true}
       loginRedirect={loginRedirect}
       onEscPress={onEscPress}
-      onRegisterClick={onRegisterClick}
     >
       <label htmlFor="register-name" className="modal__label">
         Name{" "}

@@ -2,7 +2,8 @@
   padding: 32px 0;
   margin: 10px 0;
   border-radius: 8px;
-  background-color: #00000069;
+  background-color: #000000c7;
+  /* background-image: url(../../assets/backgroundPage.avif); */
 }
 
 .header__logo {

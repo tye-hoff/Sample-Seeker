@@ -1,17 +1,30 @@
 .sounds {
   width: 1200px;
   height: 800px;
+}
 
-  background-color: transparent;
+.sounds__header {
+  color: whitesmoke;
+  background-color: black;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: fit-content;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .sounds__options {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style-type: none;
-  gap: 100px;
+  gap: 40px;
+  background-color: black;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: fit-content;
 }
 
 .sounds__options-img-name {

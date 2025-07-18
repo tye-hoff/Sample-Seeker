@@ -12,9 +12,9 @@
   background-repeat: no-repeat;
 } */
 
-.soundcards {
-  width: 323px;
-  height: 328px;
+.soundcard {
+  width: 500px;
+  /* height: 328px; */
   position: relative;
   display: flex;
   justify-content: center;
@@ -22,17 +22,19 @@
 
 .card__container {
   position: absolute;
-  top: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  top: 10px;
+  width: 257px;
+  height: 30px;
+  margin-right: 220px;
 }
 
 .card__name {
   margin: 0;
+  max-width: fit-content;
   background: #ffffff;
   border-radius: 4px;
-  font-family: Cabinet Grotesk;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -50,7 +52,16 @@
 
 .card__audio-btn {
   border-radius: 8px;
+  position: relative;
+  margin-bottom: 10px;
   border: none;
+  border-radius: 8px;
+  border: none;
+  width: 50px;
+  height: 25px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
 }
 
 .card__like-btn {

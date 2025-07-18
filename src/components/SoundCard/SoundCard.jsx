@@ -1,14 +1,30 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./SoundCard.css";
+import Preloader from "../Preloader/Preloader";
+import {
+  getSampleInstanceData,
+  processSampleData,
+} from "../../utils/FreeSoundApi";
 
-function SoundCard({ sampleListArray, sample }) {
-  const audioRef = useRef(null);
+function SoundCard({ samples }) {
+  const [sampleDetails, setSampleDetails] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
 
-  // console.log(sampleListArray.name);
-  const sampleData = { sample };
-  console.log(sampleData);
-  console.log(sampleListArray);
+  useEffect(() => {
+    getSampleInstanceData(samples.id)
+      .then((res) => {
+        const soundObject = processSampleData(res);
+        setSampleDetails(soundObject);
+      })
+      .catch(console.error);
+  }, []);
+
+  const soundRender = () => {
+    if (sampleDetails === null) {
+      return <Preloader />;
+    }
+  };
 
   const togglePlayPause = () => {
     if (isPlaying) {
@@ -19,19 +35,26 @@ function SoundCard({ sampleListArray, sample }) {
     setIsPlaying(!isPlaying);
   };
 
+  console.log(sampleDetails);
+
   return (
-    <li className="soundcards">
-      <img className="card__image" src={sample} alt={sample.name} />
+    <li className="soundcard">
+      <Preloader soundRender={soundRender} />
+      <img
+        className="card__image"
+        src={sampleDetails?.images?.spectralLarge}
+        alt=""
+      />
       <div className="card__container">
         <audio
           className="card__audio"
           ref={audioRef}
-          // src={sampleListArray.name.highQualityOgg}
+          src={sampleDetails?.previews?.highQualityMp3}
         />
         <button className="card__audio-btn" onClick={togglePlayPause}>
           {isPlaying ? "Pause" : "Play"}
         </button>
-        <h2 className="card__name">{sample.name}</h2>
+        <h2 className="card__name">{sampleDetails?.name}</h2>
       </div>
     </li>
   );

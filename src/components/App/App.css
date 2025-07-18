@@ -1,7 +1,8 @@
 .page {
   background-color: black;
+  background-image: url("../../assets/pageBackground.avif");
+
   display: flex;
-  background-image: url(../../assets/backgroundPage.avif);
 }
 
 .page__content {

@@ -29,10 +29,10 @@ function getSampleInstanceData(id) {
 // DATA PROCESSING/ DESTRUCTURING
 function processSampleData(soundObject) {
   return {
-    id: soundObject.id,
+    id: soundObject.id || "",
     name: soundObject.name,
-    username: soundObject.username,
     tags: soundObject.tags,
+    username: soundObject.username,
     duration: soundObject.duration,
     license: soundObject.license,
 
@@ -62,7 +62,11 @@ function processSampleResults(apiResponse) {
   const { results, count, next, previous } = apiResponse;
   console.log(apiResponse);
 
-  const processedSamples = results.map(processSampleResults);
+  const processedSamples = results.map((sample) => ({
+    id: sample.id,
+    name: sample.name,
+    tags: sample.tags,
+  }));
 
   return {
     samples: processedSamples,

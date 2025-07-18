@@ -1,3 +1,4 @@
+import "./PreLoader.css";
 function Preloader() {
   return <div className="preloader"></div>;
 }
