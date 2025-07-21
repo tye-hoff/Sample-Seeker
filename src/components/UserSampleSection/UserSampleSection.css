@@ -1,0 +1,42 @@
+.sample-section {
+  margin: 0px 40px;
+}
+
+.sample-section__sounds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.sample-section__title {
+  display: flex;
+  gap: 20px;
+  margin-left: 40px;
+  font-family: Cabinet Grotesk;
+  color: whitesmoke;
+
+  font-size: 20px;
+}
+
+.sample-section__btn {
+  border: none;
+  background-color: transparent;
+  font-family: Cabinet Grotesk;
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sample-section__title {
+  font-family: Cabinet Grotesk;
+  color: whitesmoke;
+
+  font-size: 20px;
+}
+
+.sample-section__btn:hover {
+  transition: color 0.2s ease-in-out;
+  color: black;
+}

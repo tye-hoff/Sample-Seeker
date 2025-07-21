@@ -49,7 +49,7 @@ export default function RegisterModal({
           type="text"
           className="modal__input"
           id="register-name"
-          placeholder="Your Name"
+          placeholder=" Your Name"
           required
           minLength="1"
           maxLength="30"
@@ -63,7 +63,7 @@ export default function RegisterModal({
           type="url"
           className="modal__input"
           id="register-avatar-url"
-          placeholder="Your avatar"
+          placeholder=" Your avatar"
           required
           minLength="1"
           onChange={handleRegistration}
@@ -76,7 +76,7 @@ export default function RegisterModal({
           type="email"
           className="modal__input"
           id="register-email"
-          placeholder="Email"
+          placeholder=" Email"
           required
           minLength="1"
           maxLength="30"
@@ -90,7 +90,7 @@ export default function RegisterModal({
           type="password"
           className="modal__input"
           id="register-password"
-          placeholder="Password"
+          placeholder=" Password"
           required
           onChange={handleRegistration}
           value={password}

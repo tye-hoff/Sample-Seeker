@@ -26,6 +26,18 @@ function getSampleInstanceData(id) {
   }).then(checkResponse);
 }
 
+function getSearchResults(tag) {
+  return fetch(
+    `${baseURL}/search/text/?query=music&filter=tag:"${tag}"&token=${APIkey}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then(checkResponse);
+}
+
 // DATA PROCESSING/ DESTRUCTURING
 function processSampleData(soundObject) {
   return {
@@ -83,4 +95,5 @@ export {
   getSampleInstanceData,
   processSampleResults,
   processSampleData,
+  getSearchResults,
 };

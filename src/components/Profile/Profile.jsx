@@ -1,10 +1,10 @@
-// import SideBar from "../SideBar/SideBar";
-// import ClothesSection from "../ClothesSection/ClothesSection";
+import SideBar from "../SideBar/SideBar";
+import UserSampleSection from "../UserSampleSection/UserSampleSection";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./Profile.css";
 
-function Profile({ onEditProfileClick, onLogoutClick }) {
+function Profile({ onEditProfileClick, onLogoutClick, samplesList }) {
   const { currentUser } = useContext(CurrentUserContext);
   console.log(currentUser);
 
@@ -19,7 +19,7 @@ function Profile({ onEditProfileClick, onLogoutClick }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        {/* <SideBar onEditProfileClick={onEditProfileClick} /> */}
+        <SideBar onEditProfileClick={onEditProfileClick} />
         <button className="profile__edit-btn" onClick={handleEditBtnClick}>
           Edit profile data
         </button>
@@ -27,10 +27,9 @@ function Profile({ onEditProfileClick, onLogoutClick }) {
           Log out
         </button>
       </section>
+
       <section className="profile__clothing-items">
-        {/* {userSamples && (
-          <userSampleSection />
-        )} */}
+        {samplesList && <UserSampleSection samplesList={samplesList} />}
       </section>
     </div>
   );

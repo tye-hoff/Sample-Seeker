@@ -22,7 +22,7 @@ function Header({ onRegisterClick, onLoginClick, onSeekClick }) {
         <button onClick={onRegisterClick} className="header__signup-btn">
           Sign up
         </button>
-        <Link to="/">
+        <Link to="/profile">
           <img src={profileLogo} alt="" className="header__logo" />
         </Link>
       </div>

@@ -17,7 +17,12 @@ function ModalWithForm({
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
-        <button onClick={onClose} type="button" className="modal__close" />
+        <button
+          onClick={onClose}
+          onEscPress={onEscPress}
+          type="button"
+          className="modal__close"
+        />
         <form
           onEscPress={onEscPress}
           onSubmit={onSubmit}

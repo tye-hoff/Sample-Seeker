@@ -40,7 +40,7 @@
 .modal__content {
   background-color: whitesmoke;
   position: relative;
-  padding: 28px 28px 36px;
+  padding: 15px;
   max-width: 496px;
   box-sizing: border-box;
   width: 100%;
@@ -69,13 +69,11 @@
 .modal__input {
   display: block;
   width: 440px;
-  height: 24px;
+  height: 40px;
   top: 293px;
   left: 500px;
-  border-width: 1px;
-  border-top: 1px;
-  border-left: 1px;
-  border-right: 1px;
+  margin-top: 10px;
+  border-radius: 30px;
   border-bottom-color: black;
   margin-bottom: 24px;
   font-family: Cabinet Grotesk;

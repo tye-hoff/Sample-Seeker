@@ -15,7 +15,7 @@ import SeekSampleModal from "../seekSampleModal/SeekSampleModal";
 import Profile from "../Profile/Profile";
 
 // CONSTANTS & API
-import { getSoundListData } from "../../utils/FreeSoundApi";
+import { getSoundListData, getSearchResults } from "../../utils/FreeSoundApi";
 
 // CONTEXT
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -34,11 +34,25 @@ function App() {
       .catch(console.error);
   }, []);
 
+  const handleSearchModalSubmit = () => {
+    console.log("click");
+    getSearchResults("analog")
+      .then((res) => {
+        console.log(res);
+        setSamplesList(res.results.slice(0, 6));
+      })
+      .catch(console.error);
+  };
+
   const handleEscPress = (event) => {
     if (event.key === "Escape") {
       setActiveModal("");
     }
   };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscPress);
+  }, []);
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -83,9 +97,10 @@ function App() {
                 <Profile
                   onEditProfileClick={handleEditProfileClick}
                   onLogoutClick={handleLogoutClick}
+                  samplesList={samplesList}
                 />
               }
-            ></Route>
+            />
           </Routes>
 
           <Footer />
@@ -115,6 +130,7 @@ function App() {
           onClose={closeActiveModal}
           onSeekClick={handleSeekClick}
           onEscPress={handleEscPress}
+          onSearchModalSubmit={handleSearchModalSubmit}
         />
       </div>
     </CurrentUserContext.Provider>

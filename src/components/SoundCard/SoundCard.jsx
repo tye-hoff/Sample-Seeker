@@ -35,16 +35,16 @@ function SoundCard({ samples }) {
     setIsPlaying(!isPlaying);
   };
 
-  console.log(sampleDetails);
-
   return (
     <li className="soundcard">
       <Preloader soundRender={soundRender} />
       <img
         className="card__image"
         src={sampleDetails?.images?.spectralLarge}
-        alt=""
+        alt="img"
       />
+      <p className="card__username">Author: {sampleDetails?.username}</p>
+      <p className="card__tags">Tags: {sampleDetails?.tags.join(" ")}</p>
       <div className="card__container">
         <audio
           className="card__audio"
