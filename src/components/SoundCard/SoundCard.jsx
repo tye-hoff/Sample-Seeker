@@ -45,13 +45,38 @@ function SoundCard({ samples }) {
       />
       <p className="card__username">Author: {sampleDetails?.username}</p>
       <p className="card__tags">Tags: {sampleDetails?.tags.join(" ")}</p>
+      <p className="card__tags">
+        Length: {sampleDetails?.duration.toFixed(2)} seconds
+      </p>
+      <p className="card__tags">
+        Average Rating: {sampleDetails?.avgRating.toFixed(2)} stars
+      </p>
+
+      <a href={sampleDetails?.license} className="card__link" target="_blank">
+        Licensing info: {sampleDetails?.license}
+      </a>
+      <a
+        href={sampleDetails?.downloadUrl}
+        download={true}
+        className="card__link"
+      >
+        Download URL: {sampleDetails?.downloadUrl}
+      </a>
+
       <div className="card__container">
         <audio
           className="card__audio"
           ref={audioRef}
           src={sampleDetails?.previews?.highQualityMp3}
         />
-        <button className="card__audio-btn" onClick={togglePlayPause}>
+        <button
+          className="card__audio-btn"
+          onClick={togglePlayPause}
+          style={{
+            borderColor: isPlaying ? "red" : "",
+            backgroundColor: isPlaying ? "red" : "",
+          }}
+        >
           {isPlaying ? "Pause" : "Play"}
         </button>
         <h2 className="card__name">{sampleDetails?.name}</h2>

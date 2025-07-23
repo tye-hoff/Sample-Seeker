@@ -25,6 +25,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [samplesList, setSamplesList] = useState([]);
+  const [header, setHeader] = useState("Our most recent sounds:");
 
   useEffect(() => {
     getSoundListData()
@@ -34,12 +35,16 @@ function App() {
       .catch(console.error);
   }, []);
 
-  const handleSearchModalSubmit = () => {
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscPress);
+  }, []);
+
+  const handleSearchModalSubmit = (searchTag) => {
     console.log("click");
-    getSearchResults("analog")
+    getSearchResults(searchTag)
       .then((res) => {
-        console.log(res);
         setSamplesList(res.results.slice(0, 6));
+        setHeader("Your search results:");
       })
       .catch(console.error);
   };
@@ -49,10 +54,6 @@ function App() {
       setActiveModal("");
     }
   };
-
-  useEffect(() => {
-    document.addEventListener("keydown", handleEscPress);
-  }, []);
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -90,7 +91,10 @@ function App() {
           />
 
           <Routes>
-            <Route path="/" element={<Main samplesList={samplesList} />} />
+            <Route
+              path="/"
+              element={<Main samplesList={samplesList} header={header} />}
+            />
             <Route
               path="/profile"
               element={

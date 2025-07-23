@@ -1,5 +1,6 @@
 .sounds {
   width: 1200px;
+  margin-left: 50px;
 }
 
 .sounds__header {
@@ -14,15 +15,13 @@
 
 .sounds__options {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style-type: none;
-  gap: 40px;
-  background-color: black;
+  gap: 100px;
   border-radius: 8px;
-  padding: 10px;
   max-width: fit-content;
 }
 

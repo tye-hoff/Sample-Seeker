@@ -10,8 +10,8 @@ function Header({ onRegisterClick, onLoginClick, onSeekClick }) {
       <div className="header__container">
         <Link to="/">
           <img className="header__logo" alt="logo" src={waveformLogo} />
+          <p className="header__title">Sample Seeker</p>
         </Link>
-        <p className="header__title">Sample Seeker</p>
 
         <button onClick={onSeekClick} className="header__sound-btn">
           Seek samples
