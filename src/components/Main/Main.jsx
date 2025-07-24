@@ -1,11 +1,11 @@
 import "./Main.css";
 import SoundCard from "../SoundCard/SoundCard";
 
-function Main({ samplesList, header }) {
+function Main({ samplesList, mainHeader }) {
   return (
     <main>
       <section className="sounds">
-        <h2 className="sounds__header">{header}</h2>
+        <h2 className="sounds__header">{mainHeader}</h2>
         <ul className="sounds__options">
           {samplesList &&
             Array.isArray(samplesList) &&

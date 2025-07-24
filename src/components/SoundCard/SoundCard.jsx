@@ -44,6 +44,7 @@ function SoundCard({ samples }) {
         alt="img"
       />
       <p className="card__username">Author: {sampleDetails?.username}</p>
+      <p className="card__tags">ID: {sampleDetails?.id}</p>
       <p className="card__tags">Tags: {sampleDetails?.tags.join(" ")}</p>
       <p className="card__tags">
         Length: {sampleDetails?.duration.toFixed(2)} seconds

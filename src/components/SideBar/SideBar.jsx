@@ -1,4 +1,5 @@
 import "./SideBar.css";
+import defaultAvatar from "../../assets/defaultAvatar.avif";
 
 function SideBar() {
   //   const { currentUser } = useContext(CurrentUserContext);
@@ -6,8 +7,12 @@ function SideBar() {
 
   return (
     <div className="sidebar">
-      <img className="sidebar__avatar" src="" alt="Default__avatar" />
-      <p className="sidebar__username">Current User</p>
+      <img
+        className="sidebar__avatar"
+        src={defaultAvatar}
+        alt="Default__avatar"
+      />
+      <p className="sidebar__username">Tyler H</p>
     </div>
   );
 }

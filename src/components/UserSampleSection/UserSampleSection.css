@@ -5,6 +5,7 @@
 .sample-section__sounds {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -38,5 +39,5 @@
 
 .sample-section__btn:hover {
   transition: color 0.2s ease-in-out;
-  color: black;
+  color: aquamarine;
 }

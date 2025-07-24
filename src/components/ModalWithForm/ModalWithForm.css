@@ -9,10 +9,14 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.6s, opacity 0.6s;
 }
 
 .modal_opened {
   visibility: visible;
+  transition: visibility 0s, opacity 0.6s ease-in;
+  opacity: 1;
 }
 
 .modal__title {
@@ -77,6 +81,10 @@
   margin-bottom: 24px;
   font-family: Cabinet Grotesk;
   background-color: whitesmoke;
+}
+
+.modal__input-file {
+  border-radius: 0;
 }
 
 .modal__radio-buttons {

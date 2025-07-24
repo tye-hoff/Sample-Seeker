@@ -1,5 +1,4 @@
 .sidebar {
-  width: 229px;
   height: 100px;
   top: 119px;
   left: 40px;
@@ -8,8 +7,8 @@
 }
 
 .sidebar__avatar {
-  width: 56px;
-  height: 56px;
+  width: 150px;
+  height: 100px;
   top: 119px;
   left: 40px;
   border-width: 1px;

@@ -18,6 +18,7 @@ export default function ({ isOpen, onClose, onEscPress, onEditProfileClick }) {
 
   return (
     <ModalWithForm
+      title="Edit profile"
       isOpen={isOpen}
       onClose={onClose}
       onEscPress={onEscPress}

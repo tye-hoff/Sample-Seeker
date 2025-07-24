@@ -12,20 +12,27 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import SeekSampleModal from "../seekSampleModal/SeekSampleModal";
+import AddSampleModal from "../AddSampleModal/AddSampleModal";
 import Profile from "../Profile/Profile";
 
 // CONSTANTS & API
-import { getSoundListData, getSearchResults } from "../../utils/FreeSoundApi";
+import {
+  getSoundListData,
+  getSearchResults,
+  postSample,
+} from "../../utils/FreeSoundApi";
 
 // CONTEXT
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [activeModal, setActiveModal] = useState("");
+  const [upload, setUpload] = useState();
   const [samplesList, setSamplesList] = useState([]);
-  const [header, setHeader] = useState("Our most recent sounds:");
+
+  const [mainHeader, setMainHeader] = useState("Our most recent samples:");
 
   useEffect(() => {
     getSoundListData()
@@ -44,7 +51,16 @@ function App() {
     getSearchResults(searchTag)
       .then((res) => {
         setSamplesList(res.results.slice(0, 6));
-        setHeader("Your search results:");
+        setMainHeader("Your search results:");
+      })
+      .catch(console.error);
+  };
+
+  const handleAddSampleSubmit = (bst_category, tags, description, license) => {
+    return postSample(bst_category, tags, description, license)
+      .then((newUpload) => {
+        setUpload(newUpload);
+        closeActiveModal();
       })
       .catch(console.error);
   };
@@ -75,6 +91,10 @@ function App() {
     setActiveModal("edit-profile");
   };
 
+  const handleAddSampleClick = () => {
+    setActiveModal("post-sample");
+  };
+
   const handleLogoutClick = () => {
     setIsLoggedIn(false);
     setCurrentUser(false);
@@ -88,12 +108,15 @@ function App() {
             onRegisterClick={handleRegisterClick}
             onLoginClick={handleLoginClick}
             onSeekClick={handleSeekClick}
+            isLoggedIn={isLoggedIn}
           />
 
           <Routes>
             <Route
               path="/"
-              element={<Main samplesList={samplesList} header={header} />}
+              element={
+                <Main samplesList={samplesList} mainHeader={mainHeader} />
+              }
             />
             <Route
               path="/profile"
@@ -102,6 +125,8 @@ function App() {
                   onEditProfileClick={handleEditProfileClick}
                   onLogoutClick={handleLogoutClick}
                   samplesList={samplesList}
+                  onAddSampleClick={handleAddSampleClick}
+                  mainHeader={mainHeader}
                 />
               }
             />
@@ -114,27 +139,29 @@ function App() {
           onClose={closeActiveModal}
           onRegisterClick={handleRegisterClick}
           onRedirect={handleLoginClick}
-          onEscPress={handleEscPress}
         />
         <LoginModal
           isOpen={activeModal === "login-user"}
           onClose={closeActiveModal}
           onLoginClick={handleLoginClick}
           onRedirect={handleRegisterClick}
-          onEscPress={handleEscPress}
         />
         <EditProfileModal
           isOpen={activeModal === "edit-profile"}
           onClose={closeActiveModal}
           onEditProfileClick={handleEditProfileClick}
-          onEscPress={handleEscPress}
         />
         <SeekSampleModal
           isOpen={activeModal === "seek-sample"}
           onClose={closeActiveModal}
           onSeekClick={handleSeekClick}
-          onEscPress={handleEscPress}
           onSearchModalSubmit={handleSearchModalSubmit}
+        />
+        <AddSampleModal
+          isOpen={activeModal === "post-sample"}
+          onClose={closeActiveModal}
+          onAddSampleClick={handleAddSampleClick}
+          onAddSampleSubmit={handleAddSampleSubmit}
         />
       </div>
     </CurrentUserContext.Provider>

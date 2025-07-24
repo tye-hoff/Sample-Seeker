@@ -4,7 +4,13 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./Profile.css";
 
-function Profile({ onEditProfileClick, onLogoutClick, samplesList }) {
+function Profile({
+  onEditProfileClick,
+  onLogoutClick,
+  samplesList,
+  onAddSampleClick,
+  mainHeader,
+}) {
   const { currentUser } = useContext(CurrentUserContext);
   console.log(currentUser);
 
@@ -29,7 +35,13 @@ function Profile({ onEditProfileClick, onLogoutClick, samplesList }) {
       </section>
 
       <section className="profile__clothing-items">
-        {samplesList && <UserSampleSection samplesList={samplesList} />}
+        {samplesList && (
+          <UserSampleSection
+            samplesList={samplesList}
+            onAddSampleClick={onAddSampleClick}
+            mainHeader={mainHeader}
+          />
+        )}
       </section>
     </div>
   );

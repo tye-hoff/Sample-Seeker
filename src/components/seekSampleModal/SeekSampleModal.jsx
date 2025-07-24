@@ -6,7 +6,7 @@ export default function SeekSampleModal({
   onClose,
   onSeekClick,
   onRedirect,
-  onEscPress,
+
   onSearchModalSubmit,
 }) {
   const [searchTag, setSearchTag] = useState("");
@@ -38,7 +38,6 @@ export default function SeekSampleModal({
       title="Seek your sample"
       isOpen={isOpen}
       onClose={onClose}
-      onEscPress={onEscPress}
       registerRedirect={registerRedirect}
       onSeekClick={onSeekClick}
       onSubmit={handleSubmit}

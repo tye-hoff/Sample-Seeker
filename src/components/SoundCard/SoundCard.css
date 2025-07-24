@@ -140,3 +140,16 @@
 .card__like-btn_liked {
   background-image: url("../../assets/likeBtnLiked.svg");
 }
+
+@media screen and (min-width: 320px) and (max-width: 627px) {
+  .soundcard {
+    width: 288px;
+    padding: 10px;
+  }
+
+  .card__link {
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

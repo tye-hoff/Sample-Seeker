@@ -11,23 +11,13 @@ function ModalWithForm({
   registerRedirect,
   children,
   title,
-  onEscPress,
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
-        <button
-          onClick={onClose}
-          onEscPress={onEscPress}
-          type="button"
-          className="modal__close"
-        />
-        <form
-          onEscPress={onEscPress}
-          onSubmit={onSubmit}
-          className="modal__form"
-        >
+        <button onClick={onClose} type="button" className="modal__close" />
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
           <div className="modal__btn-container">
             <button type="submit" className="modal__submit">

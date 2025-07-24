@@ -38,6 +38,17 @@ function getSearchResults(tag) {
   ).then(checkResponse);
 }
 
+function postSample(formData) {
+  return fetch(`${baseURL}/sounds/upload/?&token=${APIkey}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${APIkey}`,
+    },
+    body: formData,
+  }).then(checkResponse);
+}
+
 // DATA PROCESSING/ DESTRUCTURING
 function processSampleData(soundObject) {
   return {
@@ -70,30 +81,31 @@ function processSampleData(soundObject) {
   };
 }
 
-function processSampleResults(apiResponse) {
-  const { results, count, next, previous } = apiResponse;
-  console.log(apiResponse);
+// function processSampleResults(apiResponse) {
+//   const { results, count, next, previous } = apiResponse;
+//   console.log(apiResponse);
 
-  const processedSamples = results.map((sample) => ({
-    id: sample.id,
-    name: sample.name,
-    tags: sample.tags,
-  }));
+//   const processedSamples = results.map((sample) => ({
+//     id: sample.id,
+//     name: sample.name,
+//     tags: sample.tags,
+//   }));
 
-  return {
-    samples: processedSamples,
-    totalCount: count,
-    hasNext: next !== null,
-    hasPrevious: previous !== null,
-    nextUrl: next,
-    previousUrl: previous,
-  };
-}
+//   return {
+//     samples: processedSamples,
+//     totalCount: count,
+//     hasNext: next !== null,
+//     hasPrevious: previous !== null,
+//     nextUrl: next,
+//     previousUrl: previous,
+//   };
+// }
 
 export {
   getSoundListData,
   getSampleInstanceData,
-  processSampleResults,
+  // processSampleResults,
   processSampleData,
   getSearchResults,
+  postSample,
 };
