@@ -73,10 +73,13 @@
     max-width: 100%;
     margin-left: 0;
   }
+
+  .sounds__header {
+    font-size: 20px;
+  }
   .sounds__options {
-    width: 100%;
-    grid-template-columns: repeat(auto-fit, 288px);
     gap: 20px;
+    flex-direction: column;
   }
   .sounds__options-img-name {
     height: 100px;

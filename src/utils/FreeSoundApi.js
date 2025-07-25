@@ -108,4 +108,5 @@ export {
   processSampleData,
   getSearchResults,
   postSample,
+  checkResponse,
 };

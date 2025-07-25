@@ -22,6 +22,7 @@ export default function AddSampleModal({
   return (
     <ModalWithForm
       title="Add Sample"
+      buttonText="Upload"
       isOpen={isOpen}
       onAddSampleClick={onAddSampleClick}
       onSubmit={handleSubmit}

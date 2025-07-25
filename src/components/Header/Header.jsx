@@ -1,23 +1,28 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import waveformLogo from "../../assets/waveformLogo.avif";
-import profileLogo from "../../assets/musicAvatar.avif";
-// import exploreSoundBtn from "../../assets/addSoundBtn.avif";
-// import { useContext } from "react";
+import defaultAvatar from "../../assets/defaultAvatar.avif";
 import "./Header.css";
+
 function Header({ onRegisterClick, onLoginClick, onSeekClick, isLoggedIn }) {
+  const { currentUser } = useContext(CurrentUserContext);
+  console.log(currentUser);
+  console.log(isLoggedIn);
+
   return (
     <header className="header">
       {isLoggedIn ? (
         <div className="header__container">
           <Link to="/">
             <img className="header__logo" alt="logo" src={waveformLogo} />
-            <p className="header__title">Sample Seeker</p>
           </Link>
+          <p className="header__title">Sample Seeker</p>
           <button onClick={onSeekClick} className="header__sound-btn">
             Seek samples
           </button>
           <Link to="/profile">
-            <img src={profileLogo} alt="" className="header__logo" />
+            <img src={defaultAvatar} alt="" className="header__logo" />
           </Link>
         </div>
       ) : (

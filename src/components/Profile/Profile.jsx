@@ -34,7 +34,7 @@ function Profile({
         </button>
       </section>
 
-      <section className="profile__clothing-items">
+      <section className="profile__samples">
         {samplesList && (
           <UserSampleSection
             samplesList={samplesList}

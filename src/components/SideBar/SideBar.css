@@ -1,16 +1,14 @@
 .sidebar {
   height: 100px;
-  top: 119px;
-  left: 40px;
+
   border-width: 1px;
   display: flex;
 }
 
 .sidebar__avatar {
-  width: 150px;
+  width: 170px;
   height: 100px;
-  top: 119px;
-  left: 40px;
+
   border-width: 1px;
   border-radius: 50%;
 }
@@ -29,8 +27,7 @@
 
 .sidebar__edit-btn {
   border: none;
-  top: 199px;
-  left: 40px;
+
   font-family: Cabinet Grotesk;
   color: whitesmoke;
   font-weight: 700;
@@ -44,8 +41,7 @@
   border: none;
   width: 65px;
   height: 25px;
-  top: 232px;
-  left: 40px;
+
   font-family: Cabinet Grotesk;
   color: whitesmoke;
   font-weight: 700;
@@ -53,4 +49,10 @@
   line-height: 24px;
   cursor: pointer;
   background-color: transparent;
+}
+
+@media screen and (min-width: 320px) and (max-width: 627px) {
+  .profile__sidebar {
+    margin: 0;
+  }
 }

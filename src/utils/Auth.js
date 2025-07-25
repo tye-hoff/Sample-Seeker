@@ -1,13 +1,21 @@
 import { checkResponse } from "./FreeSoundApi.js";
+import { clientId, baseURL } from "./constants.js";
 
-function registerUser({ name, avatar, email, password }) {
-  return fetch(`${baseUrl}/oauth2/authorize/`, {
+function exchangeCodeForToken() {
+  return fetch(`${baseURL}/oauth2/access_token/`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: JSON.stringify({ name, avatar, email, password }),
+    body: new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      grant_type: "authorization_code",
+      code: authCode,
+    }),
   }).then(checkResponse);
+
+  // tokenData.access_token is what you'll use for API calls
 }
 
-export { registerUser };
+export { exchangeCodeForToken };

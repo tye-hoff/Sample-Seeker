@@ -7,6 +7,7 @@ export default function LoginModal({
   onLoginClick,
   onRedirect,
   onEscPress,
+  onLoginModalSubmit,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +19,11 @@ export default function LoginModal({
     setPassword(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onLoginModalSubmit();
+  };
+
   const registerRedirect = () => {
     onRedirect();
   };
@@ -26,12 +32,14 @@ export default function LoginModal({
     <ModalWithForm
       buttonText="Log in"
       buttonText2="or sign up"
+      hasSecondButton={true}
       title="Log in"
       isOpen={isOpen}
       onClose={onClose}
       onEscPress={onEscPress}
       registerRedirect={registerRedirect}
       onLoginClick={onLoginClick}
+      onSubmit={handleSubmit}
     >
       <label htmlFor="email" className="modal__label">
         Email{" "}

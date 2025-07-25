@@ -1,4 +1,5 @@
 // IMPORTS: ->
+
 // REACT & STYLING
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -16,6 +17,7 @@ import AddSampleModal from "../AddSampleModal/AddSampleModal";
 import Profile from "../Profile/Profile";
 
 // CONSTANTS & API
+import { clientId } from "../../utils/constants";
 import {
   getSoundListData,
   getSearchResults,
@@ -27,7 +29,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [activeModal, setActiveModal] = useState("");
   const [upload, setUpload] = useState();
   const [samplesList, setSamplesList] = useState([]);
@@ -63,6 +65,18 @@ function App() {
         closeActiveModal();
       })
       .catch(console.error);
+  };
+
+  const handleLogin = () => {
+    const redirectUrl = "http://localhost:3000/callback";
+    const authUrl = `https://freesound.org/apiv2/oauth2/authorize/?client_id=${clientId}&response_type=code&state=xyzredirect_uri=${redirectUrl}`;
+    window.location.href = authUrl;
+  };
+
+  const handleLoginModalSubmit = () => {
+    handleLogin();
+    window.location.href = redirectUrl;
+    setCurrentUser(true);
   };
 
   const handleEscPress = (event) => {
@@ -112,10 +126,15 @@ function App() {
           />
 
           <Routes>
+            <Route path="/callback" Component={handleLoginModalSubmit} />
             <Route
               path="/"
               element={
-                <Main samplesList={samplesList} mainHeader={mainHeader} />
+                <Main
+                  samplesList={samplesList}
+                  mainHeader={mainHeader}
+                  isLoggedIn={isLoggedIn}
+                />
               }
             />
             <Route
@@ -145,6 +164,7 @@ function App() {
           onClose={closeActiveModal}
           onLoginClick={handleLoginClick}
           onRedirect={handleRegisterClick}
+          onLoginModalSubmit={handleLoginModalSubmit}
         />
         <EditProfileModal
           isOpen={activeModal === "edit-profile"}
