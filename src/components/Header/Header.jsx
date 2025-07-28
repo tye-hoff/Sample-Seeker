@@ -29,8 +29,8 @@ function Header({ onRegisterClick, onLoginClick, onSeekClick, isLoggedIn }) {
         <div className="header__container">
           <Link to="/">
             <img className="header__logo" alt="logo" src={waveformLogo} />
-            <p className="header__title">Sample Seeker</p>
           </Link>
+          <p className="header__title">Sample Seeker</p>
           <button onClick={onLoginClick} className="header__login-btn">
             Log in
           </button>

@@ -15,13 +15,15 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import SeekSampleModal from "../seekSampleModal/SeekSampleModal";
 import AddSampleModal from "../AddSampleModal/AddSampleModal";
 import Profile from "../Profile/Profile";
+import ProtectedRoute from "../../ProtectedRoute";
 
 // CONSTANTS & API
-import { clientId } from "../../utils/constants";
+import { baseURL, clientId } from "../../utils/constants";
 import {
   getSoundListData,
   getSearchResults,
   postSample,
+  checkResponse,
 } from "../../utils/FreeSoundApi";
 
 // CONTEXT
@@ -33,8 +35,25 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [upload, setUpload] = useState();
   const [samplesList, setSamplesList] = useState([]);
-
   const [mainHeader, setMainHeader] = useState("Our most recent samples:");
+
+  useEffect(() => {
+    for (const [key, value] of new URLSearchParams(location.search)) {
+      const client_id = "SOmNWsRRmNrl67WsoLRt";
+      const client_secret = "MaFoIgSXeUpXNsLkJWOo6EsvpxSN5owEB1D0VEPB";
+      const code = value;
+      if (key === "code") {
+        localStorage.setItem("Code", value);
+        setIsLoggedIn(true);
+        fetch(
+          `${baseURL}/oauth2/access_token/?client_id=${client_id}&client_secret=${client_secret}&grant_type=authorization_code&code=${code}`,
+          {
+            method: "POST",
+          }
+        ).then(checkResponse);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     getSoundListData()
@@ -140,13 +159,15 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  onEditProfileClick={handleEditProfileClick}
-                  onLogoutClick={handleLogoutClick}
-                  samplesList={samplesList}
-                  onAddSampleClick={handleAddSampleClick}
-                  mainHeader={mainHeader}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    onEditProfileClick={handleEditProfileClick}
+                    onLogoutClick={handleLogoutClick}
+                    samplesList={samplesList}
+                    onAddSampleClick={handleAddSampleClick}
+                    mainHeader={mainHeader}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
