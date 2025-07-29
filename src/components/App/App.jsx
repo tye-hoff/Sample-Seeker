@@ -31,9 +31,9 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState("");
-  const [upload, setUpload] = useState();
+
   const [samplesList, setSamplesList] = useState([]);
   const [mainHeader, setMainHeader] = useState("Our most recent samples:");
 
@@ -42,6 +42,7 @@ function App() {
       const client_id = "SOmNWsRRmNrl67WsoLRt";
       const client_secret = "MaFoIgSXeUpXNsLkJWOo6EsvpxSN5owEB1D0VEPB";
       const code = value;
+
       if (key === "code") {
         localStorage.setItem("Code", value);
         setIsLoggedIn(true);
@@ -87,7 +88,7 @@ function App() {
   };
 
   const handleLogin = () => {
-    const redirectUrl = "http://localhost:3000/callback";
+    const redirectUrl = "http://localhost:3000/";
     const authUrl = `https://freesound.org/apiv2/oauth2/authorize/?client_id=${clientId}&response_type=code&state=xyzredirect_uri=${redirectUrl}`;
     window.location.href = authUrl;
   };
@@ -178,6 +179,7 @@ function App() {
           isOpen={activeModal === "register-user"}
           onClose={closeActiveModal}
           onRegisterClick={handleRegisterClick}
+          onLoginModalSubmit={handleLoginModalSubmit}
           onRedirect={handleLoginClick}
         />
         <LoginModal

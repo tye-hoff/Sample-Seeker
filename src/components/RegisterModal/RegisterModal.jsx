@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 export default function RegisterModal({
   isOpen,
   onClose,
-  onRegisterClick,
+  onLoginModalSubmit,
   onRedirect,
   onEscPress,
 }) {
@@ -28,6 +28,11 @@ export default function RegisterModal({
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onLoginModalSubmit();
+  };
+
   const loginRedirect = () => {
     onRedirect();
   };
@@ -42,6 +47,7 @@ export default function RegisterModal({
       hasSecondButton={true}
       loginRedirect={loginRedirect}
       onEscPress={onEscPress}
+      onSubmit={handleSubmit}
     >
       <label htmlFor="register-name" className="modal__label">
         Name{" "}
