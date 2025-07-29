@@ -1,0 +1,35 @@
+.page {
+  background-color: black;
+
+  display: flex;
+}
+
+.page__content {
+  margin: 0 auto;
+}
+
+.modal__label {
+  margin-bottom: 3px;
+  font-family: Cabinet Grotesk;
+}
+
+.modal__legend {
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  margin-bottom: 12px;
+}
+
+.modal__label_type_radio {
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
+.modal__radio-input {
+  color: black;
+}

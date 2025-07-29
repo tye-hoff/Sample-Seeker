@@ -1,0 +1,155 @@
+/* .soundcard__search-btn {
+  width: 200px;
+  height: 150px;
+  border: none;
+}
+
+.soundcard__search-img {
+  background-image: url(../../assets/addSoundBtn.avif);
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+  background-repeat: no-repeat;
+} */
+
+.soundcard {
+  width: 900px;
+  /* height: 328px; */
+  background-color: black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 15px;
+  justify-content: center;
+  border: 2px solid #f5f5f569;
+}
+
+.soundcard:hover {
+  transition: border-color 0.25s ease-in-out;
+  border-color: #fff;
+}
+
+.card__container {
+  position: absolute;
+  top: 10px;
+  width: 257px;
+  height: 30px;
+  margin-right: 220px;
+}
+
+.card__name {
+  margin: 0;
+  max-width: fit-content;
+  background: black;
+  border: 2px solid #f5f5f569;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: whitesmoke;
+  padding: 2px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__link {
+  width: fit-content;
+  border-style: solid;
+  border-color: aquamarine;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  padding: 10px;
+  color: whitesmoke;
+  background-color: transparent;
+  margin-top: 15px;
+}
+
+.card__link:hover {
+  transition: border-color 0.25s ease-in-out;
+  border-color: green;
+}
+
+.card__tags {
+  color: #ffffff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.card__username {
+  color: #ffffff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-top: 2px solid whitesmoke;
+  padding-top: 15px;
+}
+
+.card__sound-license {
+  color: #ffffff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.card__image {
+  width: 100%;
+  border-radius: 8px;
+  border: solid;
+  border-color: #0000004d;
+  position: relative;
+}
+
+.card__audio-btn {
+  position: relative;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-color: aquamarine;
+  border-radius: 8px;
+  width: 70px;
+  height: 25px;
+  color: #fff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  background-color: black;
+}
+
+.card__audio-btn:hover {
+  transition: background-color 0.25s ease-in-out;
+  background-color: aquamarine;
+  transition: color 0.25s ease-in-out;
+  color: black;
+}
+
+.card__like-btn {
+  width: 18px;
+  height: 15px;
+  background-image: url("../../assets/cardLikeBtn.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card__like-btn_liked {
+  background-image: url("../../assets/likeBtnLiked.svg");
+}
+
+@media screen and (min-width: 320px) and (max-width: 627px) {
+  .soundcard {
+    width: 288px;
+    padding: 10px;
+  }
+
+  .card__link {
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
