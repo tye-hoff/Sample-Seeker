@@ -19,6 +19,7 @@ import ProtectedRoute from "../../ProtectedRoute";
 
 // CONSTANTS & API
 import { baseURL, clientId } from "../../utils/constants";
+
 import {
   getSoundListData,
   getSearchResults,
@@ -42,7 +43,6 @@ function App() {
       const client_id = "SOmNWsRRmNrl67WsoLRt";
       const client_secret = "MaFoIgSXeUpXNsLkJWOo6EsvpxSN5owEB1D0VEPB";
       const code = value;
-
       if (key === "code") {
         localStorage.setItem("Code", value);
         setIsLoggedIn(true);
@@ -89,7 +89,8 @@ function App() {
 
   const handleLogin = () => {
     const redirectUrl = "http://localhost:3000/";
-    const authUrl = `https://freesound.org/apiv2/oauth2/authorize/?client_id=${clientId}&response_type=code&state=xyzredirect_uri=${redirectUrl}`;
+    const STATE = "";
+    const authUrl = `https://freesound.org/apiv2/oauth2/authorize/?client_id=${clientId}&response_type=code&state=${STATE}redirect_uri=${redirectUrl}`;
     window.location.href = authUrl;
   };
 

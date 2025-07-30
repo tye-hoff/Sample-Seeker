@@ -10,7 +10,6 @@ function SoundCard({ samples }) {
   const [sampleDetails, setSampleDetails] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
-  console.log(samples);
 
   useEffect(() => {
     getSampleInstanceData(samples.id)

@@ -9,16 +9,12 @@ export default function RegisterModal({
   onEscPress,
 }) {
   const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegistration = (e) => {
     if (e.target.id === "register-name") {
       setName(e.target.value);
-    }
-    if (e.target.id === "register-avatar-url") {
-      setAvatar(e.target.value);
     }
     if (e.target.id === "register-email") {
       setEmail(e.target.value);
@@ -63,19 +59,7 @@ export default function RegisterModal({
           value={name}
         />
       </label>
-      <label htmlFor="register-avatar-url" className="modal__label">
-        Avatar{" "}
-        <input
-          type="url"
-          className="modal__input"
-          id="register-avatar-url"
-          placeholder=" Your avatar"
-          required
-          minLength="1"
-          onChange={handleRegistration}
-          value={avatar}
-        />
-      </label>
+
       <label htmlFor="register-email" className="modal__label">
         Email{" "}
         <input
@@ -104,4 +88,20 @@ export default function RegisterModal({
       </label>
     </ModalWithForm>
   );
+}
+
+{
+  /* <label htmlFor="register-avatar-url" className="modal__label">
+  Avatar{" "}
+  <input
+    type="url"
+    className="modal__input"
+    id="register-avatar-url"
+    placeholder=" Your avatar"
+    required
+    minLength="1"
+    onChange={handleRegistration}
+    value={avatar}
+  />
+</label>; */
 }

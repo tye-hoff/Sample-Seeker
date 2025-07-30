@@ -1,9 +1,10 @@
+// import { useContext } from "react";
 import "./SideBar.css";
 import defaultAvatar from "../../assets/defaultAvatar.avif";
 
 function SideBar() {
-  //   const { currentUser } = useContext(CurrentUserContext);
-  //   console.log(currentUser?.avatar);
+  // const { currentUser } = useContext(CurrentUserContext);
+  // console.log(currentUser?.avatar);
 
   return (
     <div className="sidebar">
@@ -12,7 +13,7 @@ function SideBar() {
         src={defaultAvatar}
         alt="Default__avatar"
       />
-      <p className="sidebar__username">Tyler H</p>
+      <p className="sidebar__username">user name</p>
     </div>
   );
 }
