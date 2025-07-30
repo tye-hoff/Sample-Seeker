@@ -19,7 +19,6 @@ import ProtectedRoute from "../../ProtectedRoute";
 
 // CONSTANTS & API
 import { baseURL, clientId } from "../../utils/constants";
-
 import {
   getSoundListData,
   getSearchResults,
@@ -34,24 +33,46 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState("");
-
   const [samplesList, setSamplesList] = useState([]);
   const [mainHeader, setMainHeader] = useState("Our most recent samples:");
 
   useEffect(() => {
-    for (const [key, value] of new URLSearchParams(location.search)) {
+    //if the current date is after the expiresIn date, then we remove the access token from localStorage
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("access token")) {
+      return;
+    }
+
+    const searchParamsObj = new URLSearchParams(location.search);
+    for (const [key, value] of searchParamsObj) {
+      console.log(value);
       const client_id = "SOmNWsRRmNrl67WsoLRt";
       const client_secret = "MaFoIgSXeUpXNsLkJWOo6EsvpxSN5owEB1D0VEPB";
       const code = value;
+
       if (key === "code") {
+        const body = new URLSearchParams({
+          client_id,
+          client_secret,
+          code,
+          grant_type: "authorization_code",
+        });
         localStorage.setItem("Code", value);
         setIsLoggedIn(true);
         fetch(
-          `${baseURL}/oauth2/access_token/?client_id=${client_id}&client_secret=${client_secret}&grant_type=authorization_code&code=${code}`,
+          `${baseURL}/oauth2/access_token/`, //
           {
             method: "POST",
+            body,
           }
-        ).then(checkResponse);
+        )
+          .then(checkResponse)
+          .then((data) => {
+            localStorage.setItem("access token", data.access_token);
+            localStorage.setItem("expiresIn", "date");
+          });
       }
     }
   }, []);
@@ -67,6 +88,13 @@ function App() {
   useEffect(() => {
     document.addEventListener("keydown", handleEscPress);
   }, []);
+
+  const handleLogin = () => {
+    const redirectUrl = "http://localhost:3000/";
+    const STATE = "";
+    const authUrl = `https://freesound.org/apiv2/oauth2/authorize/?client_id=${clientId}&response_type=code&state=${STATE}redirect_uri=${redirectUrl}`;
+    window.location.href = authUrl;
+  };
 
   const handleSearchModalSubmit = (searchTag) => {
     console.log("click");
@@ -87,16 +115,8 @@ function App() {
       .catch(console.error);
   };
 
-  const handleLogin = () => {
-    const redirectUrl = "http://localhost:3000/";
-    const STATE = "";
-    const authUrl = `https://freesound.org/apiv2/oauth2/authorize/?client_id=${clientId}&response_type=code&state=${STATE}redirect_uri=${redirectUrl}`;
-    window.location.href = authUrl;
-  };
-
   const handleLoginModalSubmit = () => {
     handleLogin();
-    window.location.href = redirectUrl;
     setCurrentUser(true);
   };
 

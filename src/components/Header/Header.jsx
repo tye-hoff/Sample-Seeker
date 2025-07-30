@@ -8,7 +8,6 @@ import "./Header.css";
 function Header({ onRegisterClick, onLoginClick, onSeekClick, isLoggedIn }) {
   const { currentUser } = useContext(CurrentUserContext);
   console.log(currentUser);
-  console.log(isLoggedIn);
 
   return (
     <header className="header">
