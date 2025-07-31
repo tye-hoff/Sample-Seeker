@@ -81,30 +81,9 @@ function processSampleData(soundObject) {
   };
 }
 
-// function processSampleResults(apiResponse) {
-//   const { results, count, next, previous } = apiResponse;
-//   console.log(apiResponse);
-
-//   const processedSamples = results.map((sample) => ({
-//     id: sample.id,
-//     name: sample.name,
-//     tags: sample.tags,
-//   }));
-
-//   return {
-//     samples: processedSamples,
-//     totalCount: count,
-//     hasNext: next !== null,
-//     hasPrevious: previous !== null,
-//     nextUrl: next,
-//     previousUrl: previous,
-//   };
-// }
-
 export {
   getSoundListData,
   getSampleInstanceData,
-  // processSampleResults,
   processSampleData,
   getSearchResults,
   postSample,

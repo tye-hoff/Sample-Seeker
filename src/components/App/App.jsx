@@ -36,22 +36,20 @@ function App() {
   const [samplesList, setSamplesList] = useState([]);
   const [mainHeader, setMainHeader] = useState("Our most recent samples:");
 
-  useEffect(() => {
-    //if the current date is after the expiresIn date, then we remove the access token from localStorage
-  }, []);
+  // useEffect(() => {
+  //  if the current date is after the expiresIn date, then we remove the access token from localStorage
+  // }, []);
 
   useEffect(() => {
     if (localStorage.getItem("access token")) {
-      return;
+      return setIsLoggedIn(true);
     }
 
     const searchParamsObj = new URLSearchParams(location.search);
     for (const [key, value] of searchParamsObj) {
-      console.log(value);
       const client_id = "SOmNWsRRmNrl67WsoLRt";
       const client_secret = "MaFoIgSXeUpXNsLkJWOo6EsvpxSN5owEB1D0VEPB";
       const code = value;
-
       if (key === "code") {
         const body = new URLSearchParams({
           client_id,
@@ -72,7 +70,8 @@ function App() {
           .then((data) => {
             localStorage.setItem("access token", data.access_token);
             localStorage.setItem("expiresIn", "date");
-          });
+          })
+          .catch(console.error);
       }
     }
   }, []);
@@ -96,6 +95,11 @@ function App() {
     window.location.href = authUrl;
   };
 
+  const handleLoginModalSubmit = () => {
+    handleLogin();
+    setCurrentUser(true);
+  };
+
   const handleSearchModalSubmit = (searchTag) => {
     console.log("click");
     getSearchResults(searchTag)
@@ -113,11 +117,6 @@ function App() {
         closeActiveModal();
       })
       .catch(console.error);
-  };
-
-  const handleLoginModalSubmit = () => {
-    handleLogin();
-    setCurrentUser(true);
   };
 
   const handleEscPress = (event) => {
