@@ -22,7 +22,7 @@ function Profile({
       <section className="profile__sidebar">
         <SideBar onEditProfileClick={onEditProfileClick} />
         <button className="profile__edit-btn" onClick={handleEditBtnClick}>
-          Edit profile data
+          Edit profile
         </button>
         <button className="profile__logout-btn" onClick={handleLogoutClick}>
           Log out

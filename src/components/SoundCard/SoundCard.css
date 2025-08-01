@@ -1,20 +1,4 @@
-/* .soundcard__search-btn {
-  width: 200px;
-  height: 150px;
-  border: none;
-}
-
-.soundcard__search-img {
-  background-image: url(../../assets/addSoundBtn.avif);
-  width: 200px;
-  height: 150px;
-  border-radius: 8px;
-  background-repeat: no-repeat;
-} */
-
 .soundcard {
-  width: 900px;
-  /* height: 328px; */
   background-color: black;
   position: relative;
   display: flex;
@@ -57,7 +41,7 @@
 }
 
 .card__link {
-  width: fit-content;
+  word-break: break-all;
   border-style: solid;
   border-color: aquamarine;
   border-radius: 8px;
@@ -143,7 +127,6 @@
 
 @media screen and (min-width: 320px) and (max-width: 627px) {
   .soundcard {
-    width: 288px;
     padding: 10px;
   }
 

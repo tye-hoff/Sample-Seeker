@@ -26,9 +26,3 @@ function UserSampleSection({ samplesList, onAddSampleClick, mainHeader }) {
 }
 
 export default UserSampleSection;
-
-{
-  /* {sampleList.map((sample) => {
-          return <SoundCard key={sample._id} sample={sample} />;
-        })} */
-}
