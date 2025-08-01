@@ -1,11 +1,7 @@
-// import { useContext } from "react";
 import "./SideBar.css";
 import defaultAvatar from "../../assets/defaultAvatar.avif";
 
 function SideBar() {
-  // const { currentUser } = useContext(CurrentUserContext);
-  // console.log(currentUser?.avatar);
-
   return (
     <div className="sidebar">
       <img

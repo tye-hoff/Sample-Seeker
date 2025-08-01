@@ -1,4 +1,4 @@
-import { baseURL, APIkey } from "./constants";
+import { BASE_URL, API_KEY } from "./constants";
 
 const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -7,7 +7,7 @@ const checkResponse = (res) => {
 // APP/JSON
 function getSoundListData() {
   return fetch(
-    `${baseURL}/search/text/?query=music&filter=created:[* TO NOW]&token=${APIkey}`,
+    `${BASE_URL}/search/text/?query=music&filter=created:[* TO NOW]&token=${API_KEY}`,
     {
       method: "GET",
       headers: {
@@ -18,7 +18,7 @@ function getSoundListData() {
 }
 
 function getSampleInstanceData(id) {
-  return fetch(`${baseURL}/sounds/${id}/?&token=${APIkey}`, {
+  return fetch(`${BASE_URL}/sounds/${id}/?&token=${API_KEY}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function getSampleInstanceData(id) {
 
 function getSearchResults(tag) {
   return fetch(
-    `${baseURL}/search/text/?query=music&filter=tag:"${tag}"&token=${APIkey}`,
+    `${BASE_URL}/search/text/?query=music&filter=tag:"${tag}"&token=${API_KEY}`,
     {
       method: "GET",
       headers: {
@@ -39,11 +39,13 @@ function getSearchResults(tag) {
 }
 
 function postSample(formData) {
-  return fetch(`${baseURL}/sounds/upload/?&token=${APIkey}`, {
+  const access_token = localStorage.getItem("access token");
+
+  return fetch(`${BASE_URL}/sounds/upload/?&token=${API_KEY}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${APIkey}`,
+      Authorization: `Bearer ${access_token}`,
     },
     body: formData,
   }).then(checkResponse);

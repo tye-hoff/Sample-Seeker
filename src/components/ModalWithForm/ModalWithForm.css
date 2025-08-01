@@ -21,7 +21,8 @@
 
 .modal__title {
   margin: 0 0 24px 0;
-  font-family: Cabinet Grotesk;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -79,7 +80,8 @@
   border-radius: 8px;
   border-bottom-color: black;
   margin-bottom: 24px;
-  font-family: Cabinet Grotesk;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background-color: whitesmoke;
 }
 
@@ -111,7 +113,8 @@
   border: none;
   background: #000000;
   color: #fff;
-  font-family: Cabinet Grotesk;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 700;
   line-height: 20px;
   cursor: pointer;
@@ -130,7 +133,8 @@
   border: none;
   background: none;
   color: #00000080;
-  font-family: Cabinet Grotesk;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 700;
   line-height: 20px;
   cursor: pointer;

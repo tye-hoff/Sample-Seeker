@@ -1,5 +1,5 @@
-const APIkey = "MaFoIgSXeUpXNsLkJWOo6EsvpxSN5owEB1D0VEPB";
-const clientId = "SOmNWsRRmNrl67WsoLRt";
-const baseURL = "https://freesound.org/apiv2";
+const API_KEY = "MaFoIgSXeUpXNsLkJWOo6EsvpxSN5owEB1D0VEPB";
+const CLIENT_ID = "SOmNWsRRmNrl67WsoLRt";
+const BASE_URL = "https://freesound.org/apiv2";
 
-export { APIkey, baseURL, clientId };
+export { API_KEY, CLIENT_ID, BASE_URL };

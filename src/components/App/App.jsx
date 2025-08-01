@@ -1,5 +1,4 @@
 // IMPORTS: ->
-
 // REACT & STYLING
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -18,7 +17,7 @@ import Profile from "../Profile/Profile";
 import ProtectedRoute from "../../ProtectedRoute";
 
 // CONSTANTS & API
-import { baseURL, clientId } from "../../utils/constants";
+import { BASE_URL, CLIENT_ID } from "../../utils/constants";
 import {
   getSoundListData,
   getSearchResults,
@@ -35,10 +34,6 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [samplesList, setSamplesList] = useState([]);
   const [mainHeader, setMainHeader] = useState("Our most recent samples:");
-
-  // useEffect(() => {
-  //  if the current date is after the expiresIn date, then we remove the access token from localStorage
-  // }, []);
 
   useEffect(() => {
     if (localStorage.getItem("access token")) {
@@ -60,7 +55,7 @@ function App() {
         localStorage.setItem("Code", value);
         setIsLoggedIn(true);
         fetch(
-          `${baseURL}/oauth2/access_token/`, //
+          `${BASE_URL}/oauth2/access_token/`, //
           {
             method: "POST",
             body,
@@ -68,6 +63,7 @@ function App() {
         )
           .then(checkResponse)
           .then((data) => {
+            console.log(data);
             localStorage.setItem("access token", data.access_token);
             localStorage.setItem("expiresIn", "date");
           })
@@ -91,7 +87,7 @@ function App() {
   const handleLogin = () => {
     const redirectUrl = "http://localhost:3000/";
     const STATE = "";
-    const authUrl = `https://freesound.org/apiv2/oauth2/authorize/?client_id=${clientId}&response_type=code&state=${STATE}redirect_uri=${redirectUrl}`;
+    const authUrl = `https://freesound.org/apiv2/oauth2/authorize/?client_id=${CLIENT_ID}&response_type=code&state=${STATE}redirect_uri=${redirectUrl}`;
     window.location.href = authUrl;
   };
 
@@ -152,6 +148,7 @@ function App() {
   const handleLogoutClick = () => {
     setIsLoggedIn(false);
     setCurrentUser(false);
+    localStorage.removeItem("access token");
   };
 
   return (

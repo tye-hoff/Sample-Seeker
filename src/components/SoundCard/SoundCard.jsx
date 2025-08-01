@@ -37,7 +37,7 @@ function SoundCard({ samples }) {
 
   return (
     <li className="soundcard">
-      <Preloader soundRender={soundRender} />
+      <Preloader soundRender={soundRender}></Preloader>
       <img
         className="card__image"
         src={sampleDetails?.images?.spectralLarge}

@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
 import waveformLogo from "../../assets/waveformLogo.avif";
 import defaultAvatar from "../../assets/defaultAvatar.avif";
 import "./Header.css";
 
 function Header({ onRegisterClick, onLoginClick, onSeekClick, isLoggedIn }) {
-  const { currentUser } = useContext(CurrentUserContext);
-  console.log(currentUser);
-
   return (
     <header className="header">
       {isLoggedIn ? (

@@ -1,7 +1,5 @@
 import SideBar from "../SideBar/SideBar";
 import UserSampleSection from "../UserSampleSection/UserSampleSection";
-import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./Profile.css";
 
 function Profile({
@@ -11,9 +9,6 @@ function Profile({
   onAddSampleClick,
   mainHeader,
 }) {
-  const { currentUser } = useContext(CurrentUserContext);
-  console.log(currentUser);
-
   const handleEditBtnClick = () => {
     onEditProfileClick();
   };

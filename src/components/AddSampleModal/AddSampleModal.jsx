@@ -15,7 +15,6 @@ export default function AddSampleModal({
     formData.append("audiofile", selectedFile);
     formData.append("description", description);
     formData.append("tags", tags);
-
     postSample(formData);
   };
 
