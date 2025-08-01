@@ -1,0 +1,145 @@
+.soundcard {
+  background-color: black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 15px;
+  justify-content: center;
+  max-width: 800px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 2px solid #f5f5f569;
+}
+
+.modal__input:focus {
+  border-color: red;
+}
+
+.soundcard:hover {
+  transition: border-color 0.25s ease-in-out;
+  border-color: #fff;
+}
+
+.soundcard__container {
+  position: absolute;
+  top: 10px;
+  width: 257px;
+  height: 30px;
+  margin-right: 220px;
+}
+
+.soundcard__name {
+  margin: 0;
+  max-width: fit-content;
+  background: black;
+  border: 2px solid #f5f5f569;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: whitesmoke;
+  padding: 2px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.soundcard__link {
+  word-break: break-all;
+  border-style: solid;
+  border-color: aquamarine;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  padding: 10px;
+  color: whitesmoke;
+  background-color: transparent;
+  margin-top: 15px;
+}
+
+.soundcard__link:hover {
+  transition: border-color 0.25s ease-in-out;
+  border-color: green;
+}
+
+.soundcard__tags {
+  color: #ffffff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.soundcard__username {
+  color: #ffffff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-top: 2px solid whitesmoke;
+  padding-top: 15px;
+}
+
+.card__sound-license {
+  color: #ffffff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.soundcard__image {
+  width: 100%;
+  border-radius: 8px;
+  border: solid;
+  border-color: #0000004d;
+  position: relative;
+}
+
+.soundcard__audio-btn {
+  position: relative;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-color: aquamarine;
+  border-radius: 8px;
+  width: 70px;
+  height: 25px;
+  color: #fff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  background-color: black;
+}
+
+.soundcard__audio-btn:hover {
+  transition: background-color 0.25s ease-in-out;
+  background-color: aquamarine;
+  transition: color 0.25s ease-in-out;
+  color: black;
+}
+
+.card__like-btn {
+  width: 18px;
+  height: 15px;
+  background-image: url("../../assets/cardLikeBtn.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card__like-btn_liked {
+  background-image: url("../../assets/likeBtnLiked.svg");
+}
+
+@media screen and (min-width: 320px) and (max-width: 627px) {
+  .soundcard {
+    padding: 10px;
+  }
+
+  .soundcard__link {
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
