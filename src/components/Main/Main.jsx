@@ -4,9 +4,9 @@ import SoundCard from "../SoundCard/SoundCard";
 function Main({ samplesList, mainHeader }) {
   return (
     <main>
-      <section className="sounds">
-        <h2 className="sounds__header">{mainHeader}</h2>
-        <ul className="sounds__options">
+      <section className="main">
+        <h2 className="main__header">{mainHeader}</h2>
+        <ul className="main__sounds-options">
           {samplesList &&
             Array.isArray(samplesList) &&
             samplesList.map((samples) => {

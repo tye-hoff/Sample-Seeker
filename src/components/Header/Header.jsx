@@ -12,7 +12,7 @@ function Header({ onRegisterClick, onLoginClick, onSeekClick, isLoggedIn }) {
           <Link to="/">
             <img className="header__logo" alt="logo" src={waveformLogo} />
           </Link>
-          <p className="header__title">Sample Seeker</p>
+          <h1 className="header__title">Sample Seeker</h1>
           <button onClick={onSeekClick} className="header__sound-btn">
             Seek samples
           </button>
@@ -25,7 +25,7 @@ function Header({ onRegisterClick, onLoginClick, onSeekClick, isLoggedIn }) {
           <Link to="/">
             <img className="header__logo" alt="logo" src={waveformLogo} />
           </Link>
-          <p className="header__title">Sample Seeker</p>
+          <h1 className="header__title">Sample Seeker</h1>
           <button onClick={onLoginClick} className="header__login-btn">
             Log in
           </button>

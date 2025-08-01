@@ -10,12 +10,8 @@ export default function SeekSampleModal({
   onSearchModalSubmit,
 }) {
   const [searchTag, setSearchTag] = useState("");
-  // const [searchName, setSearchName] = useState("");
 
   const handleInputChange = (e) => {
-    // if (e.target.id === "sample-name") {
-    //   setSearchName(e.target.value);
-    // }
     if (e.target.id === "sample-tag") {
       setSearchTag(e.target.value);
     }
@@ -35,6 +31,7 @@ export default function SeekSampleModal({
     <ModalWithForm
       buttonText="Search"
       buttonText2="or sign up"
+      hasSecondButton={true}
       title="Seek your sample"
       isOpen={isOpen}
       onClose={onClose}
@@ -42,20 +39,6 @@ export default function SeekSampleModal({
       onSeekClick={onSeekClick}
       onSubmit={handleSubmit}
     >
-      {/* <label htmlFor="sample-name" className="modal__label">
-        Seek by name{" "}
-        <input
-          type="text"
-          className="modal__input"
-          id="sample-name"
-          placeholder=" Seek by name"
-          required
-          minLength="1"
-          maxLength="30"
-          onChange={handleInputChange}
-          value={searchName}
-        />
-      </label> */}
       <label htmlFor="sample-tag" className="modal__label">
         Seek by tag, mood, or genre{" "}
         <input

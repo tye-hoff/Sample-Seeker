@@ -39,39 +39,43 @@ function SoundCard({ samples }) {
     <li className="soundcard">
       <Preloader soundRender={soundRender}></Preloader>
       <img
-        className="card__image"
+        className="soundcard__image"
         src={sampleDetails?.images?.spectralLarge}
         alt="img"
       />
-      <p className="card__username">Author: {sampleDetails?.username}</p>
-      <p className="card__tags">ID: {sampleDetails?.id}</p>
-      <p className="card__tags">Tags: {sampleDetails?.tags.join(" ")}</p>
-      <p className="card__tags">
+      <p className="soundcard__username">Author: {sampleDetails?.username}</p>
+      <p className="soundcard__tags">ID: {sampleDetails?.id}</p>
+      <p className="soundcard__tags">Tags: {sampleDetails?.tags.join(" ")}</p>
+      <p className="soundcard__tags">
         Length: {sampleDetails?.duration.toFixed(2)} seconds
       </p>
-      <p className="card__tags">
+      <p className="soundcard__tags">
         Average Rating: {sampleDetails?.avgRating.toFixed(2)} stars
       </p>
 
-      <a href={sampleDetails?.license} className="card__link" target="_blank">
+      <a
+        href={sampleDetails?.license}
+        className="soundcard__link"
+        target="_blank"
+      >
         Licensing info: {sampleDetails?.license}
       </a>
       <a
         href={sampleDetails?.downloadUrl}
         download={true}
-        className="card__link"
+        className="soundcard__link"
       >
         Download URL: {sampleDetails?.downloadUrl}
       </a>
 
-      <div className="card__container">
+      <div className="soundcard__container">
         <audio
           className="card__audio"
           ref={audioRef}
           src={sampleDetails?.previews?.highQualityMp3}
         />
         <button
-          className="card__audio-btn"
+          className="soundcard__audio-btn"
           onClick={togglePlayPause}
           style={{
             borderColor: isPlaying ? "red" : "",
@@ -80,7 +84,7 @@ function SoundCard({ samples }) {
         >
           {isPlaying ? "Pause" : "Play"}
         </button>
-        <h2 className="card__name">{sampleDetails?.name}</h2>
+        <h2 className="soundcard__name">{sampleDetails?.name}</h2>
       </div>
     </li>
   );

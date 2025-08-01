@@ -1,9 +1,9 @@
-.sounds {
+.main {
   max-width: 100%;
   margin-left: 50px;
 }
 
-.sounds__header {
+.main__header {
   color: whitesmoke;
   background-color: black;
   border-radius: 8px;
@@ -13,9 +13,8 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.sounds__options {
+.main__sounds-options {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
@@ -69,15 +68,15 @@
 }
 
 @media screen and (max-width: 627px) {
-  .sounds {
+  .main {
     max-width: 100%;
     margin-left: 0;
   }
 
-  .sounds__header {
+  .main__header {
     font-size: 20px;
   }
-  .sounds__options {
+  .main__sounds-options {
     gap: 20px;
     flex-direction: column;
   }

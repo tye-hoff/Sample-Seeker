@@ -80,8 +80,17 @@ function App() {
       .catch(console.error);
   }, []);
 
+  const handleEscPress = (event) => {
+    if (event.key === "Escape") {
+      setActiveModal("");
+    }
+  };
+
   useEffect(() => {
     document.addEventListener("keydown", handleEscPress);
+    return () => {
+      document.removeEventListener("keydown", handleEscPress);
+    };
   }, []);
 
   const handleLogin = () => {
@@ -113,12 +122,6 @@ function App() {
         closeActiveModal();
       })
       .catch(console.error);
-  };
-
-  const handleEscPress = (event) => {
-    if (event.key === "Escape") {
-      setActiveModal("");
-    }
   };
 
   const closeActiveModal = () => {

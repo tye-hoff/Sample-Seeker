@@ -6,7 +6,14 @@
   border-radius: 8px;
   padding: 15px;
   justify-content: center;
+  max-width: 800px;
+  box-sizing: border-box;
+  width: 100%;
   border: 2px solid #f5f5f569;
+}
+
+.modal__input:focus {
+  border-color: red;
 }
 
 .soundcard:hover {
@@ -14,7 +21,7 @@
   border-color: #fff;
 }
 
-.card__container {
+.soundcard__container {
   position: absolute;
   top: 10px;
   width: 257px;
@@ -22,7 +29,7 @@
   margin-right: 220px;
 }
 
-.card__name {
+.soundcard__name {
   margin: 0;
   max-width: fit-content;
   background: black;
@@ -40,7 +47,7 @@
   text-overflow: ellipsis;
 }
 
-.card__link {
+.soundcard__link {
   word-break: break-all;
   border-style: solid;
   border-color: aquamarine;
@@ -55,18 +62,18 @@
   margin-top: 15px;
 }
 
-.card__link:hover {
+.soundcard__link:hover {
   transition: border-color 0.25s ease-in-out;
   border-color: green;
 }
 
-.card__tags {
+.soundcard__tags {
   color: #ffffff;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.card__username {
+.soundcard__username {
   color: #ffffff;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -80,7 +87,7 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.card__image {
+.soundcard__image {
   width: 100%;
   border-radius: 8px;
   border: solid;
@@ -88,7 +95,7 @@
   position: relative;
 }
 
-.card__audio-btn {
+.soundcard__audio-btn {
   position: relative;
   margin-bottom: 10px;
   border-style: solid;
@@ -103,7 +110,7 @@
   background-color: black;
 }
 
-.card__audio-btn:hover {
+.soundcard__audio-btn:hover {
   transition: background-color 0.25s ease-in-out;
   background-color: aquamarine;
   transition: color 0.25s ease-in-out;
@@ -130,7 +137,7 @@
     padding: 10px;
   }
 
-  .card__link {
+  .soundcard__link {
     width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;

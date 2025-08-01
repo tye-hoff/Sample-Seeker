@@ -22,10 +22,6 @@
   font-weight: 700;
 }
 
-/* .sidebar__btn-container {
-  height: 50px;
-} */
-
 .sidebar__edit-btn {
   border: none;
 
@@ -55,10 +51,6 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 627px) {
-  .profile__sidebar {
-    margin: 0;
-  }
-
   .sidebar__avatar {
     width: 75px;
     height: 75px;
